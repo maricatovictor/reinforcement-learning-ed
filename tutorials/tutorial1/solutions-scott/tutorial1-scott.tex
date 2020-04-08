@@ -1,0 +1,78 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage[all]{xy}
+\usepackage[margin=1in]{geometry}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[toc,page]{appendix}
+\usepackage{geometry}
+\usepackage{siunitx}
+
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\usepackage{algorithm,algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+\geometry{tmargin=0.7in,bmargin=0.7in,lmargin=0.9in,rmargin=0.9in}
+
+\numberwithin{equation}{section}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{claim}[thm]{Claim}
+\theoremstyle{remark}
+%\newtheorem*{rem}{Remark}\underline{}
+
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\F}{\mathbb F}
+\newcommand{\E}{\mathbb E}
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+
+\title{RL Tutorial 1}
+\author{Scott Brownlie}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+
+In supervised learning we have a training set of examples $(x, y)$. Each $x$ is an input and the corresponding $y$ is its label. The label can be thought of as the correct answer for the input. The training set is generally fixed before learning and we wish to learn a mapping from inputs to labels which generalises to new unseen data from the same distribution as the training data. 
+
+In contrast, RL is goal-directed learning which is achieved through interaction with an environment. In RL we do not have a fixed training set. Instead, an agent generates data by interacting with an environment over discrete time steps. On each time step the agent is presented with a representation of its current state, $x$ say, and it has to decided how to act. Unlike in supervised learning, there is no label $y$ which tells the agent how to act. Instead, the agent chooses and executes an action and receives feedback from the environment in the form of a scalar reward. The reward signal should be such that maximising the long term reward results in the agent achieving its goal. In the absence of supervised labels the agent must find the best action for each state in a trial and error fashion.
+
+The answer given by Shaikh is flawed because it suggests that only in supervised learning do we have knowledge of the environment. In fact, in many reinforcement learning tasks we have complete knowledge of the environment, however, for all but the smallest problems learning without interaction is intractable.  
+
+
+
+
+\end{document}
