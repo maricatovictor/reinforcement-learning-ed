@@ -79,8 +79,25 @@ However, the world is so vast that collecting and labelling a useful training se
 
 Another potential application is deciding which push notifications to send to customers. This type of problem almost certainly involves delayed rewards. For example, a customer may receive a push notification which catches his/her interest but decides to take no immediate action. A subsequent push at a later time may ultimately trigger the action and generate a reward, but the earlier push was responsible for starting the customer off down the ``sales funnel''. RL allows an agent to assign credit to both pushes. If we were to model this problem as supervised learning then we ourselves would have to assign credit by defining some crude rule or manually labelling the push notifications in a time consuming and tedious process. 
 
-\end{document}
+\section*{Problem 3}
 
+There are four non-terminal states $rock_0$, $rock_1$, $water_0$ and $water_1$ and a single terminal state $land$. The states $water_0$ and $water_1$ are the patches of water surrounding $rock_0$ and $rock_1$, respectively. Suppose that the rocks are arranged from left to right.
+When the frog is in state $rock_0$ it can only jump to the right and with probability 0.9 it transitions to $rock_1$, else it transitions to $water_0$. When the frog is in state $rock_1$ it can either jump to the left or to the right. If it jumps to the left then it transitions to $rock_0$ with probability 0.9, else it transitions to $water_1$. If it jumps to the right then it transitions to $land$ with probability 0.9, else it transitions to $water_1$. Finally, when the frog is in state $water_i$ then with probability 1 it climbs back onto $rock_i$, for $i=0,1$.
+
+We assume that the frog's goal it to reach land as quickly as possible. We also assume that it takes the frog twice as long to climb out of the water as it does to jump from a rock. We therefore define the following reward for each transition:
+\begin{itemize}
+	\item $rock_0$ to $rock_1$: $-1$
+	\item $rock_0$ to $water_0$: $-1$
+	\item $rock_1$ to $rock_0$: $-1$
+	\item $rock_1$ to $water_1$: $-1$
+	\item $water_0$ to $rock_0$: $-2$
+	\item $water_1$ to $rock_1$: $-2$
+	\item $rock_1$ to $land$: $0$.
+\end{itemize}
+In this way the cumulative reward is essentially one minus the time taken for the frog to reach land. Hence, by maximising the cumulative reward the frog reaches land in the shortest possible time, achieving its goal.
+
+
+\end{document}
 
 
 
